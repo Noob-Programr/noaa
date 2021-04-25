@@ -169,8 +169,9 @@ GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
 #' eaq_data%>%
 #'   eq_clean_data()%>%
 #'   dplyr::filter(`Country` %in% c("MEXICO") & !(is.na(Mag))) %>%
-#'   ggplot(aes(x = Year, y = Country, size = Mag, colour = `Total Deaths`)) +
-#'    geom_timeline_label(alpha = 0.3, label = `Location Name`)
+#'   dplyr::mutate(popup_text = eq_create_label(.)) %>%
+#'   ggplot(aes(x = Year, y = Country, size = Mag, colour = `Total Deaths`, label = `Location Name`)) +
+#'    geom_timeline_label(alpha = 0.3)
 #' }
 geom_timeline_label <- function(mapping = NULL, data = NULL, stat = "identity",
                                 position = "identity", na.rm = FALSE,
