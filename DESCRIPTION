@@ -6,7 +6,7 @@ Author: Shuvrarghya Ghosh
 Maintainer: Shuvrarghya Ghosh <arghag.user@hotmail.com>
 Description: Contain functions that aid creation of timelines of earthquake occurrences and maps their
     location on an interactive world map.
-License: GPL (>=2)
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Depends: 
