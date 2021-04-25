@@ -4,7 +4,7 @@
 # noaa
 
 <!-- badges: start -->
-
+[![Travis build status](https://travis-ci.com/Noob-Programr/noaa.svg?branch=master)](https://travis-ci.com/Noob-Programr/noaa)
 <!-- badges: end -->
 
 The goal of noaa is to process the data on
