@@ -13,7 +13,8 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-
+# noaa Package- Usage
+This package is solely made to clean and analyze the data on earthquakes and obtain visual representations of the same over time and space.The goal is to present a timeline of eathquakes and a spatial overview of location specifics of each earthquake using their respective epicenter's latitude and longitude on a world map. Addition aesthetics like location name, date of occurrence etc can also be made to feature on the plots.Tweaking the data to some considerable extent, one can actually visualize the trends of earthquakes with respect time in different regions of the world.
 ```{r setup}
 library(noaa) # load the package
 ```
@@ -32,7 +33,23 @@ names(eaq_data) #Features of the data set
 ```{r snapshot}
 head(eaq_data, 15) #snapshot of the dataset
 ```
+## The eq_clean_data function
+```{r clean_data}
+data <- eq_clean_data(eaq_data)
+head(data, 15)  # snapshot of the cleaned dataset
+```
 
+```{r class_demo1}
+class(data$Latitude)
+
+```
+```{r class_demo2}
+class(data$Longitude)
+
+```
+```{r class_demo3}
+class(data$Date)
+```
 ## Creating a Timeline of Earthquakes
 We will be using two sorts of timeline using **geom_timeline** and **geom_timteline_label** of ggplot. Both have similar construction except for the fact that the later can be used to annotate the points on the timeline.
 
@@ -60,7 +77,15 @@ data <- eaq_data%>%
 ggplot(data = data, aes(x = Year, y = Country, size = Mag, colour = `Total Deaths`, label = `Location Name`)) + geom_timeline_label(alpha = 0.3)
 
 ```
+## The eq_create_label function
+```{r create_label}
+library (magrittr)
+data <- eaq_data %>%
+  eq_location_clean()%>%
+  eq_create_label()
 
+data[1:5]
+```
 ## Mapping the Earthquake locations on a World Map
 ```{r fig.height=5, fig.width=10}
 
